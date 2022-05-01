@@ -31,12 +31,12 @@
   </body>
   <script>
     var favArr=JSON.parse(localStorage.getItem("favourites"))||[]
-    display(favArr)
+    
     //code your js part here
     //append your output to tbody
-    function display(data){
-      console.log(data)
-      data.forEach(function(el) {
+    
+      
+      favArr.forEach(function(el) {
         var box=document.querySelector("tbody")
     var tr=document.createElement("tr")
     var td1=document.createElement("td")
@@ -48,7 +48,7 @@
     tr.append(td1,td2,td3)
     box.append(tr)
       });
-    }
+    
    
   </script>
 </html>
