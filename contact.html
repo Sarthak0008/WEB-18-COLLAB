@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database</title>
+    <link rel="stylesheet" href="commonStyles.css" />
+  </head>
+
+  <body>
+    <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="contact.html">Contact List</a></div>
+      <div><a href="favourites.html">Favourites</a></div>
+    </div>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Contact Name</th>
+            <th>Mobile Number</th>
+            <th>Type</th>
+            <th>Favourites</th>
+          </tr>
+        </thead>
+        <tbody id="con">
+          <!-- Append your output to tbody -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    //code your js part here
+    //append your output to tbody
+    var data=JSON.parse(localStorage.getItem("contactList"))||[]
+
+    var favArr=JSON.parse(localStorage.getItem("favourites"))||[]
+
+    var con=document.querySelector("#con")
+    data.forEach(function(el){
+      var parent=document.createElement("tr")
+
+      var name=document.createElement("td")
+      name.innerText=el.name
+      
+      var number=document.createElement("td")
+      number.innerText=el.number
+      var type=document.createElement("td")
+      type.innerText=el.type
+      var fav=document.createElement("td")
+      fav.innerText="Favourites"
+      fav.style.color="blue"
+      fav.style.cursor="pointer";
+      
+      
+      fav.addEventListener("click",function(){
+        favArrfun(el)
+      })
+      
+      
+      parent.append(name,number,type,fav)
+      con.append(parent)
+      
+
+    });
+    function favArrfun(el){
+        console.log(el)
+        favArr.push(el)
+        localStorage.setItem("favourites",JSON.stringify(favArr))
+     
+      }
+     
+    
+  </script>
+</html>
